@@ -1,0 +1,5 @@
+seconds=int(input())
+days=(seconds//86400)
+hours=(seconds//3600)
+minuts=(seconds//60)
+print(days,":", hours, ":", minuts, ":", seconds)
