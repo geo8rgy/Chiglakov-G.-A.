@@ -1,0 +1,11 @@
+from math import sqrt
+def set_med( sides_list ):
+    k = 2 * sum( [ x*x for x in sides_list ] )
+    try:
+        sides_list[:] = list( map( lambda x: sqrt( k - 3*x*x )/2, sides_list ) )
+    except:
+        sides_list[:] = (0,0,0)
+lis = list( map( float, input('a, b, c = ').split() ) )
+set_med(lis)
+set_med(lis)
+print( *list( map( lambda x: round(x,2), lis ) ) )
