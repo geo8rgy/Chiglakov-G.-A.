@@ -1,0 +1,33 @@
+import json
+def F():
+    v = name.get()
+    f_json = """
+    {
+        'company': None
+        'created_at': '2014-10-29T04:41:45Z'
+        'email': None
+        'id': 9442231
+        'name': 'FireHOL'
+        'url': 'https://api.github.com/users/FireHOL'
+    }"""
+
+    if v == 'FireHOL':
+        with open('C:\\Users\\gigoka\\Desktop\\основы\\Зан11\\vivod.json', 'w') as file:
+            json.dump(f_json, file)
+
+
+    else:
+        print('Такого не знаем')
+
+import tkinter as tk
+
+window = tk.Tk()
+window.geometry('400x200')
+window.title("Репозиторий")
+name = tk.Entry(window)
+name.grid(padx=120, pady=15)
+btn = tk.Button(window, text="Сохранить", command=F)
+btn.grid(padx=90, pady=15)
+window.mainloop()
+
+print(F)
