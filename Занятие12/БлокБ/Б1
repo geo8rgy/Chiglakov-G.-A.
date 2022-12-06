@@ -1,0 +1,14 @@
+def max(S, n):
+    if n == 1:
+        return S[n-1]
+    else:
+        previous = max(S, n-1)
+        current = S[n-1]
+        if previous > current:
+            return previous
+        else:
+            return current
+
+
+if __name__ == '__main__':
+    print(max([98, 14, 78, 66, 2], 5))
