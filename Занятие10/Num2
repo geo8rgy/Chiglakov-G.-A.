@@ -1,0 +1,17 @@
+def two():
+    A = []
+    file2 = open('C:\\Users\\gigoka\\Desktop\\основы\\Зан10\\Chiglakov G. A._U-224_vivod2.txt', 'w')
+    with open('C:\\Users\\gigoka\\Desktop\\основы\\Зан10\\Chiglakov G. A._U-224_vvod2.txt', 'r') as file:
+        for line in file:
+            B = line.strip()
+            H = B.split(' ')
+            h = list(map(int, H))
+            A.append(list(h))
+    H = []
+    for i in range(len(A) - 1):
+        for j in range(len(A[0])):
+            A[i][j] -= A[-1][j]
+    for i in A:
+        file2.write(str(i) + '\n')
+
+two()
