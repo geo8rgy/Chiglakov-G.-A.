@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите начальное число: ");
+        int m = scanner.nextInt();
+
+        System.out.print("Введите конечное число: ");
+        int n = scanner.nextInt();
+
+        System.out.println("Введите делители (для окончания ввода введите любую букву): ");
+
+        int sum = 0;
+        int count = 0;
+        boolean isDivisible;
+
+        while (scanner.hasNextInt()) {
+            int divisor = scanner.nextInt();
+            isDivisible = true;
+            for (int i = m; i <= n; i++) {
+                if (i % divisor != 0) {
+                    isDivisible = false;
+                    break;
+                }
+            }
+            if (isDivisible) {
+                sum += divisor;
+                count++;
+            }
+        }
+
+        if (count == 0) {
+            System.out.println("Нет делителей, на которые делятся все числа в ряде.");
+        } else {
+            System.out.println("Сумма делителей, на которые делятся все числа в ряде: " + sum);
+        }
+    }
+}
