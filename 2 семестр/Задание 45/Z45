@@ -1,0 +1,19 @@
+public class Main {
+    public static String convertToRomanNumerals(int years) {
+        if (years < 1 || years > 9999) {
+            throw new IllegalArgumentException("Years must be in the range of 1 to 9999");
+        }
+
+        String[] thousands = {"", "M", "MM", "MMM"};
+        String[] hundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        String[] tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        String[] ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+
+        return thousands[years / 1000] + hundreds[(years % 1000) / 100] + tens[(years % 100) / 10] + ones[years % 10];
+    }
+
+    public static void main(String[] args) {
+        int years = 1488;
+        System.out.println(years + " год в формате римских цифр будет выглядеть так: " + convertToRomanNumerals(years));
+    }
+}
