@@ -1,0 +1,85 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    private static final String FILE_NAME = "history.txt";
+    private static final String DELIMITER = " ";
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> history = loadHistory();
+        while (true) {
+            System.out.print("> ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                continue;
+            }
+            if (input.equalsIgnoreCase("Пока")) {
+                break;
+            }
+            String[] parts = input.split(DELIMITER);
+            if (parts.length != 3) {
+                System.out.println("Не могу решить :(");
+                continue;
+            }
+            double a = Double.parseDouble(parts[0]);
+            double b = Double.parseDouble(parts[2]);
+            double result;
+            switch (parts[1]) {
+                case "+":
+                    result = a + b;
+                    break;
+                case "-":
+                    result = a - b;
+                    break;
+                case "*":
+                    result = a * b;
+                    break;
+                case "/":
+                    result = a / b;
+                    break;
+                case "//":
+                    result = (int) (a / b);
+                    break;
+                case "%":
+                    result = a % b;
+                    break;
+                case "^":
+                    result = Math.pow(a, b);
+                    break;
+                case "|":
+                    result = Math.abs(b);
+                    break;
+                default:
+                    System.out.println("Недействительный оператор");
+                    continue;
+            }
+            history.add(input + " = " + result);
+            saveHistory(history);
+            System.out.println(result);
+        }
+    }
+
+    private static List<String> loadHistory() {
+        List<String> history = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                history.add(line);
+            }
+        } catch (IOException e) {
+            // ignore
+        }
+        return history;
+    }
+
+    private static void saveHistory(List<String> history) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))) {
+            for (String equation : history) {
+                writer.println(equation);
+            }
+        } catch (IOException e) {
+            // ignore
+        }
+    }
+}
