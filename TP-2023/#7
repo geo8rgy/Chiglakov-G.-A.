@@ -1,0 +1,114 @@
+public class Disk 
+   private String name;
+   private String type;
+   private String category;
+   private String description;
+
+   public Disk(String name, String type, String category, String description) 
+       this.name = name;
+       this.type = type;
+       this.category = category;
+       this.description = description;
+   
+
+   // геттеры и сеттеры для полей
+
+
+public class Collection 
+   private List<Disk> disks;
+
+   public Collection() 
+       disks = new ArrayList<>();
+   
+
+   public void addDisk(Disk disk) 
+       disks.add(disk);
+   
+
+   public void removeDisk(Disk disk) 
+       disks.remove(disk);
+   
+
+   public void editDisk(Disk oldDisk, Disk newDisk) 
+       int index = disks.indexOf(oldDisk);
+       disks.set(index, newDisk);
+   
+
+   public List<Disk> searchByName(String name) 
+       List<Disk> result = new ArrayList<>();
+       for (Disk disk : disks) 
+           if (disk.getName().equals(name)) 
+               result.add(disk);
+           
+       
+       return result;
+   
+
+   // другие методы поиска по критериям
+
+
+public class Dictionary 
+   private List<String> types;
+   private List<String> categories;
+
+   public Dictionary() 
+       types = new ArrayList<>();
+       categories = new ArrayList<>();
+   
+
+   public void addType(String type) 
+       types.add(type);
+   
+
+   public void removeType(String type) 
+       types.remove(type);
+   
+
+   public void editType(String oldType, String newType) 
+       int index = types.indexOf(oldType);
+       types.set(index, newType);
+   
+
+   public void addCategory(String category) 
+       categories.add(category);
+   
+
+   public void removeCategory(String category) 
+       categories.remove(category);
+   
+
+   public void editCategory(String oldCategory, String newCategory) 
+       int index = categories.indexOf(oldCategory);
+       categories.set(index, newCategory);
+   
+
+   // геттеры для списков типов и категорий
+
+
+public class Main 
+   public static void main(String[] args) 
+       Collection collection = new Collection();
+       Dictionary dictionary = new Dictionary();
+
+       // добавление типов и категорий в словарь
+       dictionary.addType("DVD");
+       dictionary.addType("CD-R");
+       dictionary.addType("mini-disc");
+       dictionary.addCategory("фильмы");
+       dictionary.addCategory("музыка");
+       dictionary.addCategory("ПО");
+
+       // добавление дисков в коллекцию
+       Disk disk1 = new Disk("Название диска 1", "DVD", "фильмы", "Описание диска 1");
+       Disk disk2 = new Disk("Название диска 2", "CD-R", "музыка", "Описание диска 2");
+       collection.addDisk(disk1);
+       collection.addDisk(disk2);
+
+       // поиск дисков по критериям
+       List<Disk> result1 = collection.searchByName("Название диска 1");
+       List<Disk> result2 = collection.searchByType("DVD");
+       List<Disk> result3 = collection.searchByCategory("музыка");
+
+       // редактирование диска в коллекции
+       Disk newDisk = new Disk("Новое название", "DVD", "фильмы", "Новое описание");
+       collection.editDisk(disk1, newDisk);
