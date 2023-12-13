@@ -1,0 +1,17 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Disk disk1 = new Disk("DVD", "Бесславные ублюдки - реж. Квентин Тарантино + бонус официальный саундтрек", Arrays.asList("фильмы", "музыка"));
+        Disk disk2 = new Disk("CD-R", "Radio Tapok - Альбом Эпоха Империй", Arrays.asList("музыка"));
+        Disk disk3 = new Disk("mini-Disk", "Windows 11 сборка by Chacha", Arrays.asList("ПО"));
+
+        DiskCollection collection = new DiskCollection();
+
+        collection.addDisk(disk1);
+        collection.addDisk(disk2);
+        collection.addDisk(disk3);
+
+        collection.displayAllDisks();
+    }
+}
