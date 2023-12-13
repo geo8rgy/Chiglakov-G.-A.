@@ -1,0 +1,23 @@
+import java.util.List;
+class Disk {
+    private String type; // Тип носителя (dvd, cd-r, mini-disc)
+    private String description; // Описание носителя
+    private List<String> categories; // Категории информации
+
+    public Disk(String type, String description, List<String> categories) {
+        this.type = type;
+        this.description = description;
+        this.categories = categories;
+    }
+
+    // Геттеры и сеттеры для полей класса
+    //...
+
+    // Переопределение метода toString для удобного вывода информации о диске
+    @Override
+    public String toString() {
+        return "Type: " + type + "\n" +
+                "Description: " + description + "\n" +
+                "Categories: " + categories.toString();
+    }
+}
