@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class DiskCollection {
+    private List<Disk> disks; // Список дисков
+
+    public DiskCollection() {
+        disks = new ArrayList<>();
+    }
+
+    // Метод для добавления диска в коллекцию
+    public void addDisk(Disk disk) {
+        disks.add(disk);
+    }
+
+    // Метод для удаления диска из коллекции
+    public void removeDisk(Disk disk) {
+        disks.remove(disk);
+    }
+
+    // Метод для редактирования диска в коллекции
+    public void editDisk(Disk oldDisk, Disk newDisk) {
+        int index = disks.indexOf(oldDisk);
+        disks.set(index, newDisk);
+    }
+
+    // Метод для вывода информации о всех дисках в коллекции
+    public void displayAllDisks() {
+        for (Disk disk : disks) {
+            System.out.println(disk.toString());
+        }
+    }
+}
